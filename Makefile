@@ -1,6 +1,6 @@
 
 # Image URL to use all building/pushing image targets
-IMG ?= goharbor/harbor-operator:dev
+IMG ?= cr.loongnix.cn/goharbor/harbor-operator:1.2.0
 RELEASE_VERSION ?= 0.0.0-dev
 GIT_COMMIT ?= none
 
@@ -186,10 +186,8 @@ go.sum: go.mod $(GONOGENERATED_SOURCES)
 
 # Build the docker image
 .PHONY: docker-build
-docker-build: dist/harbor-operator_linux_amd64/manager
-	docker build dist/harbor-operator_linux_amd64 \
-		-f Dockerfile \
-		-t "$(IMG)"
+docker-build:
+	docker build -f Dockerfile -t "$(IMG)" .
 
 # Push the docker image
 .PHONY: docker-push
