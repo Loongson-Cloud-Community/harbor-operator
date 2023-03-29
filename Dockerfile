@@ -3,6 +3,6 @@
 FROM cr.loongnix.cn/library/debian:buster-slim
 WORKDIR /
 COPY bin/manager .
-USER nonroot:nonroot
+#USER nonroot:nonroot
 
 ENTRYPOINT ["/manager"]
